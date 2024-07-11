@@ -8,8 +8,8 @@ def printBinaryTree(root):
     if root == None:
         return
     print(root.data)
-    print(printBinaryTree(root.left))
-    print(printBinaryTree(root.right))
+    printBinaryTree(root.left)
+    printBinaryTree(root.right)
     
     
 btn1 = BinaryTreeNode(1)
@@ -18,4 +18,4 @@ btn3 = BinaryTreeNode(3)
 btn1.left = btn2
 btn1.right = btn3
 
-print(printBinaryTree(btn1))
+printBinaryTree(btn1)
