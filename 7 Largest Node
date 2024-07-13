@@ -16,7 +16,7 @@ class BinaryTreeNode:
 def largestNode(root) :
     #Your code goes here
     if root == None:
-        return 0
+        return -1
     
     leftLargest = largestNode(root.left)
     rightLargest = largestNode(root.right)
