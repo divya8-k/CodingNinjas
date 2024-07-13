@@ -1,0 +1,15 @@
+class BinaryTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+def getSum(root):
+	#Your code goes here
+    if root == None:
+        return 0
+    
+    leftSum = getSum(root.left)
+    rightSum = getSum(root.right)
+    return root.data + leftSum + rightSum
