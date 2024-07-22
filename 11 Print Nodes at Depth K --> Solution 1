@@ -1,0 +1,36 @@
+class BinaryTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+def printNodesAtDepthK(root, k):
+    #Your code goes here
+    if root == None:
+        return
+    
+    if k == 0:
+        print(root.data)
+        return
+    
+    nodesAtDepthK(root.left, k-1)
+    nodesAtDepthK(root.right, k-1)
+    
+  
+    
+def treeInput():
+    rootData = int(input())
+    if rootData == -1:
+        return None
+    root = BinaryTreeNode(rootData)
+    leftTree = treeInput()
+    rightTree = treeInput()
+    root.left = leftTree
+    root.right = rightTree
+    return root
+
+
+
+root = treeInput()  
+print(printNodesAtDepthK(root, 1))
