@@ -1,1 +1,51 @@
+class BinaryTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+        
+def printBinaryTree(root):
+    if root == None:
+        return
+    print(root.data)
+    printBinaryTree(root.left)
+    printBinaryTree(root.right)
 
+class Pair:
+    def __init__(self, diameter, height):
+        self.diameter = diameter
+        self.height = height
+        
+def diameterHelper(root):
+    if root == None:
+        pair = Pair(0, 0)
+        return pair
+    
+    leftPair = diameterHelper(root.left)
+    rightPair = diameterHelper(root.right)
+    
+    leftDiameter = leftPair.diameter
+    rightDiameter = rightPair.diameter
+    
+    diameterFromRoot = leftPair.height + rightPair.height + 1
+    
+    diameter = max(leftDiameter, rightDiameter, diameterFromRoot)
+    height = max(leftPair.height, rightPair.height) + 1
+    
+    return Pair(diameter, height)
+    
+def diameterOfBinaryRootTree(root):
+    pair = diameterHelper(root)
+    return pair.diameter
+    
+
+btn1 = BinaryTreeNode(1)
+btn2 = BinaryTreeNode(2)
+btn3 = BinaryTreeNode(3)
+btn4 = BinaryTreeNode(4)
+btn1.left = btn2
+btn1.right = btn3
+btn2.right = btn4
+
+printBinaryTree(btn1)
+print(diameterOfBinaryRootTree(root))
