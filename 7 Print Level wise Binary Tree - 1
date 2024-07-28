@@ -1,0 +1,60 @@
+class BinaryTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+def printLevelWise(root):
+    # Your code goes here
+     
+    # Base case
+    if root is None:
+        return -1
+    # Create an empty queue for level order traversal
+    q = []
+ 
+    # Enqueue root and initialize height
+    q.append(root)
+ 
+    while q:
+ 
+        # nodeCount (queue size) indicates number
+        # of nodes at current level.
+        count = len(q)
+ 
+        # Dequeue all nodes of current level and
+        # Enqueue all nodes of next level
+        while count > 0:
+            temp = q.pop(0)
+            print(temp.data, end = ':')
+            if temp.left:
+                q.append(temp.left)
+                temp_left = temp.left.data
+                print('L:', temp_left, end = ',')
+            else:
+                print('L:-1', end = ',')
+            if temp.right:
+                q.append(temp.right)
+                temp_right = temp.right.data
+                print('R:', temp_right)
+            else:
+                print('R:-1')
+ 
+            count -= 1
+        
+
+
+    
+    
+btn1 = BinaryTreeNode(1)
+btn2 = BinaryTreeNode(2)
+btn3 = BinaryTreeNode(3)
+btn4 = BinaryTreeNode(4)
+btn5 = BinaryTreeNode(5)
+btn1.left = btn2
+btn1.right = btn3
+btn2.left = btn4
+btn2.right = btn5
+
+printLevelWise(btn1)
