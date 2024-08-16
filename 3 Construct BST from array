@@ -11,7 +11,7 @@ def constructBST(lst):
     if not lst:
         return None
         
-    mid = len(lst)//2
+    mid = (len(lst)-1) // 2
 
     root = BinaryTreeNode(lst[mid])
     root.left = constructBST(lst[:mid])
